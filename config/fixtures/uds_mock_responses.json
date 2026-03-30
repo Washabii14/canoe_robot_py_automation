@@ -1,0 +1,56 @@
+{
+  "22 F1 90": {
+    "service": "0x22",
+    "payload": "62F190574D495F53545542",
+    "positive": true,
+    "nrc": null
+  },
+  "symbolic:Read_VIN": {
+    "service": "Read_VIN",
+    "payload": "WMI_STUB",
+    "positive": true,
+    "nrc": null
+  },
+  "10 02": {
+    "service": "0x10",
+    "payload": "50 02",
+    "positive": true,
+    "nrc": null
+  },
+  "27 01": {
+    "service": "0x27",
+    "payload": "67 01 AA BB CC DD",
+    "positive": true,
+    "nrc": null
+  },
+  "27 02 00 00 00 00": {
+    "service": "0x27",
+    "payload": "67 02",
+    "positive": true,
+    "nrc": null
+  },
+  "34 00 44 00 00 00 10": {
+    "service": "0x34",
+    "payload": "74 20 00 10",
+    "positive": true,
+    "nrc": null
+  },
+  "36 01 DE AD BE EF": {
+    "service": "0x36",
+    "payload": "76 01",
+    "positive": true,
+    "nrc": null
+  },
+  "37": {
+    "service": "0x37",
+    "payload": "77",
+    "positive": true,
+    "nrc": null
+  },
+  "11 01": {
+    "service": "0x11",
+    "payload": "51 01",
+    "positive": true,
+    "nrc": null
+  }
+}
