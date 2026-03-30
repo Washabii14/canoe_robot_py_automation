@@ -2,6 +2,11 @@
 
 ECU validation framework for diagnostics and CAN flashing using Robot Framework, Python, and CANoe.
 
+Public user documentation:
+- `documents/Getting_Started.md`
+- `documents/Test_Authoring_Guide.md`
+- `documents/Live_Bench_Usage.md`
+
 ## Project Description
 
 This project provides:
@@ -43,9 +48,9 @@ python3 -m libraries.diagnostics.diagnostics_cli --backend mock --transport can 
 - runtime variables: `resources/variables/env.robot`, `resources/variables/ids.robot`
 
 ### Recommended guides
-- test flow updates: `design_docs/Test_Flow_Modification_Guide.md`
-- testcase examples + expected PASS/FAIL logs: `design_docs/Testcase_Examples_Pass_Fail.md`
-- IDs placeholders and replacement: `design_docs/IDs_Placeholder_Setup_Guide.md`
+- getting started: `documents/Getting_Started.md`
+- testcase writing: `documents/Test_Authoring_Guide.md`
+- live bench run usage: `documents/Live_Bench_Usage.md`
 
 ## How To Use
 
@@ -71,7 +76,7 @@ Diagnostics keywords include explicit wait patterns:
 ### Live bench usage (Windows + CANoe)
 
 Use the runbook:
-- `design_docs/Live_Execution_Readiness.md`
+- `documents/Live_Bench_Usage.md`
 
 Common helper commands:
 
