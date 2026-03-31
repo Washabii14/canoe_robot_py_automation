@@ -1,4 +1,4 @@
-"""Phase 2 hardening smoke checks."""
+"""Smoke checks for input hardening and parsing helpers."""
 
 from __future__ import annotations
 

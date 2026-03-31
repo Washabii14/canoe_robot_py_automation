@@ -7,8 +7,9 @@ import json
 from pathlib import Path
 from typing import Dict
 
-DEFAULT_PROFILE_DIR = Path("scripts/ids_profiles")
-DEFAULT_IDS_FILE = Path("resources/variables/ids.robot")
+REPO_ROOT = Path(__file__).resolve().parent.parent
+DEFAULT_PROFILE_DIR = REPO_ROOT / "scripts" / "ids_profiles"
+DEFAULT_IDS_FILE = REPO_ROOT / "resources" / "variables" / "ids.robot"
 
 REQUIRED_KEYS = {
     "ID_PROFILE",
@@ -38,7 +39,7 @@ def main() -> int:
     args = parser.parse_args()
 
     profile_path = resolve_profile_path(args.profile_name, args.profile_file)
-    ids_file = Path(args.ids_file)
+    ids_file = resolve_repo_path(args.ids_file)
 
     if not ids_file.exists():
         raise FileNotFoundError(f"ids file not found: {ids_file}")
@@ -65,7 +66,7 @@ def main() -> int:
 
 def resolve_profile_path(profile_name: str | None, profile_file: str | None) -> Path:
     if profile_file:
-        path = Path(profile_file)
+        path = resolve_repo_path(profile_file)
     elif profile_name:
         path = DEFAULT_PROFILE_DIR / f"{profile_name}.json"
     else:
@@ -86,6 +87,11 @@ def validate_profile(profile: Dict[str, str], path: Path) -> None:
     missing = sorted(REQUIRED_KEYS - set(profile.keys()))
     if missing:
         raise ValueError(f"profile missing keys in {path}: {', '.join(missing)}")
+
+
+def resolve_repo_path(raw_path: str) -> Path:
+    path = Path(raw_path)
+    return path if path.is_absolute() else REPO_ROOT / path
 
 
 def apply_profile(ids_robot_text: str, profile: Dict[str, str]) -> str:

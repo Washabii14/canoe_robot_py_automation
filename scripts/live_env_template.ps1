@@ -17,6 +17,11 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
+$RepoRoot = Split-Path -Parent $PSScriptRoot
+
+if (-not [System.IO.Path]::IsPathRooted($EnvFile)) {
+    $EnvFile = Join-Path $RepoRoot $EnvFile
+}
 
 if (-not (Test-Path $EnvFile)) {
     Write-Error "env file not found: $EnvFile"
@@ -43,7 +48,7 @@ if ($CreateBackup) {
 }
 
 $lines = [System.Collections.Generic.List[string]]::new()
-Get-Content -Path $EnvFile | ForEach-Object { [void]$lines.Add($_) }
+Get-Content -Path $EnvFile -Encoding utf8 | ForEach-Object { [void]$lines.Add($_) }
 
 foreach ($key in $updates.Keys) {
     $pattern = "^\$\{$key\}\s+.*$"
@@ -61,5 +66,5 @@ foreach ($key in $updates.Keys) {
     }
 }
 
-Set-Content -Path $EnvFile -Value $lines
+Set-Content -Path $EnvFile -Value $lines -Encoding utf8
 Write-Host "Updated $EnvFile for live backend."

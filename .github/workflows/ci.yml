@@ -17,15 +17,16 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          python -m pip install -r requirements.txt
+          python -m pip install -e .
 
       - name: Static syntax check
         run: |
-          python -m compileall libraries tests
+          python -m compileall libraries tests scripts
 
       - name: Run Python smoke tests
         run: |
-          pytest -q tests/smoke
+          python -m pytest -q tests/smoke
 
       - name: Robot dry-run suites
         run: |

@@ -14,6 +14,11 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
+$RepoRoot = Split-Path -Parent $PSScriptRoot
+
+if (-not [System.IO.Path]::IsPathRooted($IdsFile)) {
+    $IdsFile = Join-Path $RepoRoot $IdsFile
+}
 
 if (-not (Test-Path $IdsFile)) {
     Write-Error "ids file not found: $IdsFile"
@@ -38,7 +43,7 @@ if ($CreateBackup) {
 }
 
 $lines = [System.Collections.Generic.List[string]]::new()
-Get-Content -Path $IdsFile | ForEach-Object { [void]$lines.Add($_) }
+Get-Content -Path $IdsFile -Encoding utf8 | ForEach-Object { [void]$lines.Add($_) }
 
 foreach ($key in $updates.Keys) {
     $pattern = "^\$\{$key\}\s+.*$"
@@ -56,5 +61,5 @@ foreach ($key in $updates.Keys) {
     }
 }
 
-Set-Content -Path $IdsFile -Value $lines
+Set-Content -Path $IdsFile -Value $lines -Encoding utf8
 Write-Host "Updated $IdsFile with profile $IdProfile."

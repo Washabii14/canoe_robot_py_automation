@@ -1,4 +1,4 @@
-"""Phase 3 smoke checks for transport adapter policy behavior."""
+"""Smoke checks for transport adapter policy behavior."""
 
 from __future__ import annotations
 

@@ -2,7 +2,7 @@
 # Placeholder IDs for diagnostics/flashing addressing.
 # Replace these values with project-specific real bench setup values.
 
-# Transport selection hint used by test planning/documentation.
+# Profile label used by setup helpers and documentation.
 ${ID_PROFILE}                  PLACEHOLDER
 
 # CAN/CAN-FD addressing (examples shown as hex string placeholders).

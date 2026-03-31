@@ -1,4 +1,4 @@
-"""Phase 5 smoke checks for Robot abstraction libraries."""
+"""Smoke checks for the Robot abstraction libraries."""
 
 from __future__ import annotations
 

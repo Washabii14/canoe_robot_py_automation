@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "canoe-robot-py-automation"
+version = "0.1.0"
+description = "ECU validation framework for diagnostics and CAN flashing using Robot Framework, Python, and CANoe."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { file = "LICENSE" }
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["libraries*", "scripts*"]

@@ -1,4 +1,4 @@
-"""Phase 4 smoke checks for CAN flashing engine."""
+"""Smoke checks for the CAN flashing engine."""
 
 from __future__ import annotations
 

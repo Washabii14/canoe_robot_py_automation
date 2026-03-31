@@ -1,5 +1,5 @@
 @echo off
-setlocal
+setlocal EnableDelayedExpansion
 
 if "%~1"=="" (
   echo Usage: scripts\ids_template.bat ^<ID_PROFILE^> [CAN_TESTER_ID] [CAN_ECU_ID] [CAN_FUNCTIONAL_ID]
@@ -11,10 +11,14 @@ set ID_PROFILE=%~1
 set CAN_TESTER_PHYSICAL_ID=%~2
 set CAN_ECU_PHYSICAL_ID=%~3
 set CAN_TESTER_FUNCTIONAL_ID=%~4
+set EXITCODE=0
 
 if "%CAN_TESTER_PHYSICAL_ID%"=="" set CAN_TESTER_PHYSICAL_ID=0x7E0
 if "%CAN_ECU_PHYSICAL_ID%"=="" set CAN_ECU_PHYSICAL_ID=0x7E8
 if "%CAN_TESTER_FUNCTIONAL_ID%"=="" set CAN_TESTER_FUNCTIONAL_ID=0x7DF
+
+pushd "%~dp0.."
+if errorlevel 1 exit /b !ERRORLEVEL!
 
 powershell -ExecutionPolicy Bypass -File scripts\ids_template.ps1 ^
   -IdProfile "%ID_PROFILE%" ^
@@ -23,4 +27,6 @@ powershell -ExecutionPolicy Bypass -File scripts\ids_template.ps1 ^
   -CanTesterFunctionalId "%CAN_TESTER_FUNCTIONAL_ID%" ^
   -CreateBackup
 
-exit /b %errorlevel%
+set EXITCODE=!ERRORLEVEL!
+popd
+exit /b !EXITCODE!

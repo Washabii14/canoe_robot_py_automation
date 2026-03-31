@@ -1,4 +1,4 @@
-"""Phase 1 smoke checks for contracts and mock flow."""
+"""Smoke checks for contracts and mock flow."""
 
 from __future__ import annotations
 

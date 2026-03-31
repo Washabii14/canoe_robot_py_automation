@@ -8,10 +8,19 @@ This framework supports ECU diagnostics and CAN flashing using Robot Framework +
 - Robot Framework
 - (Live bench) Windows + CANoe + Vector hardware + `pywin32`
 
-Install dependencies:
+Install dependencies and the editable project package:
 
 ```bash
 python3 -m pip install -r requirements.txt
+python3 -m pip install -e .
+```
+
+The editable install keeps `libraries` imports stable for CLI commands, smoke tests, and IDE/local runs.
+
+Run Python smoke tests:
+
+```bash
+python3 -m pytest -q tests/smoke
 ```
 
 ## Run In Mock Mode
